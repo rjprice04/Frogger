@@ -1,6 +1,8 @@
 class Frog extends Rectangle {
+  boolean onLog;
     Frog(float x, float y, float w, float h){
     super(x,y,w,h);
+    onLog = false;
   }
   void show(){
     fill(255);

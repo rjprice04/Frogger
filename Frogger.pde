@@ -11,7 +11,7 @@ void setup(){
   cars = new Car[8];
   int index = 0;
   //cars 
-  for(int i = 0; i< 2; i++){
+  for(int i = 0; i < 2; i++){
     float x = i *300;
     cars[index] = new Car(x, height-GRID*2, GRID*2 , GRID, 2.0); 
     index++;
@@ -56,7 +56,9 @@ void draw(){
   rect(0, height - GRID * 5, width, GRID);
   frog.show(); 
    for(Car car : cars){
-    car.intersect(frog);
+    if(car.intersect(frog)){
+      resetGame();
+    }
     car.update();
     car.show();
   }

@@ -17,14 +17,13 @@ class Car extends Rectangle {
     }
     x += speed;
   }
-  void intersect(Frog frog){
+  boolean intersect(Frog frog){
     
-    if(frog.x > this.x || frog.x  < this.x + this.w){
-      System.out.println("Hit");
+    if(frog.x > x && frog.x  < this.x + this.w && frog.y == this .y){
+      return true;
     }
     else{
-      System.out.println("Safe");
-
+      return false;
     }
   
   }
