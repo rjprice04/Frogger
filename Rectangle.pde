@@ -14,6 +14,13 @@ class Rectangle {
     fill(200);
     rect(x,y,w,h);
   }
+  boolean interact(Frog frog){
+     if(frog.x > this.x - this.w/4 && frog.x  < this.x + this.w && frog.y == this .y){
+      return true;
+    }
+    
+    return false;
+  }
 
   
 }

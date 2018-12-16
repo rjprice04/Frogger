@@ -6,25 +6,16 @@ class Car extends Rectangle {
   }
   void update(){
     if(speed > 0){ // need to check if it is completely off the screen for both of these
-      if(x > width){
-        x = -50;
+      if(x > width + w){
+        x = 0 - w;
       }
     }
     else{
-      if(x < 0){
-        x = width + 50;
+      if(x < -w){
+        x = width + w;
       }
     }
     x += speed;
   }
-  boolean intersect(Frog frog){
-    
-    if(frog.x > x && frog.x  < this.x + this.w && frog.y == this .y){
-      return true;
-    }
-    else{
-      return false;
-    }
-  
-  }
+
 }

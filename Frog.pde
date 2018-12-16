@@ -1,8 +1,10 @@
 class Frog extends Rectangle {
   boolean onLog;
+  float speed;
     Frog(float x, float y, float w, float h){
     super(x,y,w,h);
     onLog = false;
+    speed = 0;
   }
   void show(){
     fill(255);
@@ -16,13 +18,20 @@ class Frog extends Rectangle {
    
   }
   void moveLeftRight(float move){
-    float check  = x + move * 50;
+    float check  = x + move * 25;
     if(check < width+25  && check > -25 ){
       x = check;
     }
     
   }
-    
+  void setOnLog(boolean onLog, float speed){
+    this.onLog = onLog;
+    this.speed = speed;
+  }
+  void update(){
+    this.x += speed;
+  }
+
   
   
 }
