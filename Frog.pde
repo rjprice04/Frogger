@@ -17,9 +17,18 @@ class Frog extends Rectangle {
     }
    
   }
+  //void move(float xMove, float yMove){
+  //  float checkX = x + xMove * 25;
+  //  float checkY = y + yMove * 25;
+  //  if(checkX < width  && checkX > -25 && checkY < height + 25 && checkY > 0){
+  //    this.x = checkX;
+  //    this.y = checkY;
+  //  }
+    
+  //}
   void moveLeftRight(float move){
     float check  = x + move * 25;
-    if(check < width+25  && check > -25 ){
+    if(check < width+25  && check > 0 ){
       x = check;
     }
     
