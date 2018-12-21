@@ -10,7 +10,10 @@ PImage carImgRe;
 PImage logImg;
 PImage waterImg;
 PImage grassImg;
+PImage frogImg;
+
 void setup(){
+  frogImg = loadImage("frogImg.png");
   waterImg = loadImage("waterImg.png");
   carImg = loadImage("carImg.png");
   carImgRe = loadImage("carImg2.png");
@@ -34,7 +37,7 @@ void setup(){
   }
   for(int i = 0; i< 4; i++){
      float x = i *150 +25;
-     cars[index] = new Car(x, height-GRID*4, GRID , GRID, 1,carImg); 
+     cars[index] = new Car(x, height-GRID*4, GRID* 1.5 , GRID, 1,carImg); 
      index++;
   }
   //logs
@@ -42,7 +45,7 @@ void setup(){
    index = 0;
     for(int i = 0; i< 3; i++){
       float x = i * 250 + 100;
-      logs[index] = new Log(x, height-GRID*6, GRID*1.75, GRID, 1,logImg); 
+      logs[index] = new Log(x, height-GRID*6, GRID*2, GRID, 1,logImg); 
       index++;
     }
     for(int i = 0; i< 2; i++){
@@ -61,14 +64,14 @@ void setup(){
 }
 
 void draw(){
-  background(0);
+  background(#303030);
   image(grassImg,0,0, width, GRID * 2);
   //rect(0,0, width, GRID *2);
   image(grassImg, 0, height-GRID, width, GRID);
   //rect(0,height-GRID, width, GRID);
   image(grassImg, 0, height - GRID * 5, width, GRID);
   //rect(0, height - GRID * 5, width, GRID);
-
+  image(waterImg, 0, height-GRID*8, width, GRID*3);
    for(Car car : cars){
     if(car.interact(frog)){
       lives--;
@@ -82,7 +85,7 @@ void draw(){
       if(log.interact(frog)){
         frog.setOnLog(true, log.speed);
       }
-               System.out.println(frog.speed);
+               
 
       if(!frog.onLog ){
         lives--;
@@ -97,14 +100,14 @@ void draw(){
   if(frog.onLog && frog.y == GRID * 5 || frog.y == GRID ){     frog.setOnLog(false,0);
   }
   int spot = 20;
-  textSize(12);
+  textSize(20);
   fill(0);
-  text("Lives",spot,height-(GRID/2+10));
+  text("Lives",spot-5,height-(GRID/2+9));
   for(int i = 0; i< lives; i++){
     
-    fill(0);
-    ellipse(spot, height-GRID/2, 10,10);
-    spot+=15;
+    fill(255,0,0);
+    ellipse(spot, height-GRID/2, 15,15);
+    spot+=17;
   }
   
     frog.update();
@@ -112,14 +115,14 @@ void draw(){
     if(lives <= 0){
       textSize(45);
       textAlign(CENTER);
-      fill(100);
+      fill(255,0,0);
       String s = "Game Over \n\n Click to play again";
-      text(s,250,250);
+      text(s,250,245);
     }
 }
 
 void keyPressed(){
-  System.out.println(keyCode);
+  //System.out.println(keyCode);
   if(lives > 0){
     if(keyCode == 38){
       frog.moveUpDown(-1);
@@ -150,5 +153,5 @@ void mousePressed(){
 }
 
 void resetGame(){
-  frog = new Frog((WIDTH/2) - 25, HEIGHT-50, GRID,GRID);
+  frog = new Frog((WIDTH/2) - 25, HEIGHT-50, GRID/2,GRID, frogImg);
 }

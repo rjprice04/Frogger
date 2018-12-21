@@ -1,15 +1,15 @@
 class Frog extends Rectangle {
   boolean onLog;
   float speed;
-    Frog(float x, float y, float w, float h){
-    super(x,y,w,h);
+    Frog(float x, float y, float w, float h,PImage img){
+    super(x,y,w,h,img);
     onLog = false;
     speed = 0;
   }
-  void show(){
-    fill(255);
-    rect(x,y,w,h);
-  }
+  //void show(){
+  //  fill(255);
+  //  rect(x,y,w,h);
+  //}
   void moveUpDown(float move){
     float check  = y + move * 50;
     if(check < height && check > 0 ){
